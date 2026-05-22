@@ -55,15 +55,6 @@ git checkout -b <new-branch> <source-branch>
 git switch -c <new-branch> <source-branch>
 
 
-git branch -M 01_DEV
-git push -u origin 01_DEV
-
-git branch -M main
-git branch -M main
-git branch -M main
-
-
-
 
 
 git checkout -b 01_DEV main
