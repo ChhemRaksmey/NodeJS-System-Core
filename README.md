@@ -28,7 +28,7 @@ Files of interest:
 
 
 
-git init
+<!-- git init
 git add .
 git commit -m "first commit"
 git branch -M main
@@ -37,23 +37,37 @@ git push -u origin main
 
 
 
-git branch -M 01_Developement
-git push -u origin 01_Developement
-
-git branch -M 02_UserAcceptionTesting
-git push -u origin 02_UserAcceptionTesting
-
-git branch -M 03_Production_1
-git push -u origin 03_Production_1
-
-git branch -M 03_Production_2
-git push -u origin 03_Production_2
-
-
-
 
 git add README.md
-git commit -m "first commit"
-git push
 
 
+
+
+
+
+# Create new branch from another branch (without switching)
+git branch <new-branch> <source-branch>
+
+# Create and switch to it immediately
+git checkout -b <new-branch> <source-branch>
+
+# Newer syntax
+git switch -c <new-branch> <source-branch>
+
+
+git branch -M 01_DEV
+git push -u origin 01_DEV
+
+git branch -M main
+git branch -M main
+git branch -M main
+
+
+
+
+
+git checkout -b 01_DEV main
+
+
+
+-->
