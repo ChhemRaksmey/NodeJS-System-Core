@@ -28,9 +28,8 @@ Files of interest:
 
 
 
-echo "# NodeJS-System-Core" >> README.md
 git init
-git add README.md
+git add .
 git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/ChhemRaksmey/NodeJS-System-Core.git
@@ -51,5 +50,10 @@ git branch -M 03_Production_2
 git push -u origin 03_Production_2
 
 
+
+
+git add README.md
+git commit -m "first commit"
+git push
 
 
