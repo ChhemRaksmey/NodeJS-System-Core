@@ -30,11 +30,11 @@ app.use('/api', routersApi);
 
 
 
-const host = process.env.HOST || 'localhost';
+// const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || 3000;
 
-app.listen(port, host, () => {
-  console.log(`Server running on http://${host}:${port}`);
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
 
 module.exports = app;
