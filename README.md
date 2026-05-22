@@ -61,4 +61,15 @@ git checkout -b 01_DEV main
 
 
 
+
+
+# Copy 'main' into a new feature branch
+git checkout -b feature/01_DEV main
+git push origin feature/01_DEV
+
+
+git checkout -b 01_DEV main
+git push origin 01_DEV
+
+
 -->
