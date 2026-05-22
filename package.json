@@ -1,0 +1,18 @@
+{
+  "name": "nodejs-middleware-extract",
+  "version": "1.0.0",
+  "description": "Minimal Node.js project with routes, layouts, partials and styles",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.8",
+    "express-ejs-layouts": "^2.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

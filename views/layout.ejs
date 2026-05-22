@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+
+    <head>
+        <%- include('partials/header') %>
+    </head>
+
+    <body class="text-sm">
+
+        <script src="assets/static/js/initTheme.js"></script>
+        
+        <div id="app">
+
+            <%- include('partials/sidebar') %>
+
+            <div id="main" class='layout-navbar navbar-fixed'>
+
+                <%- include('partials/navigation') %>
+
+                <div id="main-content" class="pt-0">
+                    <div class="page-heading">
+
+                        <section class="section">
+                            <%- body %>
+                        </section>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <%- include('components/loading', { }) %>
+
+        <%- include('partials/scripts') %>
+
+    </body>
+
+</html>

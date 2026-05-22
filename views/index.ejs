@@ -1,0 +1,210 @@
+<h2><%= __('home.welcome') %></h2>
+<p><%= __('home.description') %></p>
+
+
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0"><%= __('home.basicInput') %></label>
+            <input type="text" class="form-control" id="basicInput" placeholder="<%= __('home.enterEmail') %>">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Input text with help</label>
+            <small class="text-muted">eg.<i>someone@example.com</i></small>
+            <input type="text" class="form-control" id="helpInputTop">
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">With Helper Text</label>
+            <input type="text" id="helperText" class="form-control" placeholder="Name">
+            <p><small class="text-muted">Find helper text here for given textbox.</small></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Text</label>
+            <input type="text" class="form-control" />
+        </div>
+                                                    
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Number</label>
+            <input type="text" class="form-control" />
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <label for="invalid-state">Invalid State</label>
+        <input type="text" class="form-control is-invalid" placeholder="Invalid" required />
+        <div class="invalid-feedback">
+            <small>This is invalid state.</small>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Date Time</label>
+            <input type="date" class="form-control mb-3 picker-datetime" placeholder="select datetime" />
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="mb-0">Date</label>
+            <input type="date" class="form-control picker-date" placeholder="select date" />
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-group">
+            <label class="mb-0">Time</label>
+            <input type="date" class="form-control picker-time" placeholder="select time" />
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Date Range</label>
+            <input type="date" class="form-control picker-date-range" placeholder="select date range" />
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Drop Down</label>
+            <select class="choices form-select form-select-sm">
+                <option value="square">Square</option>
+                <option value="rectangle">Rectangle</option>
+                <option value="rombo">Rombo</option>
+                <option value="romboid">Romboid</option>
+                <option value="trapeze">Trapeze</option>
+                <option value="traible">Triangle</option>
+                <option value="polygon">Polygon</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="form-group">
+            <label class="mb-0">Multi Select</label>
+            <select class="choices form-select multiple-remove" multiple="multiple">
+                <option value="romboid">Romboid</option>
+                <option value="trapeze" selected>Trapeze</option>
+                <option value="triangle">Triangle</option>
+                <option value="polygon">Polygon</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue" selected>Blue</option>
+                <option value="purple">Purple</option>
+            </select>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Switch</label>
+            <ul class="list-unstyled mb-0 pt-1">
+                <li class="d-inline-block me-2 mb-1">
+                    <div class="form-check form-switch">
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" /> Switch 1</label>
+                    </div>
+                </li>
+                <li class="d-inline-block me-2 mb-1">
+                    <div class="form-check form-switch">
+                        <label class="form-check-label"><input class="form-check-input" type="checkbox" /> Switch 1</label>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Choices</label>
+            <ul class="list-unstyled mb-0 pt-1">
+                <li class="d-inline-block me-2 mb-1">
+                    <label class="form-check-label"><input class="form-check-input" type="radio" name="flexRadioDefault" checked /> Choice 1</label>
+                </li>
+                <li class="d-inline-block me-2 mb-1">
+                    <label class="form-check-label"><input class="form-check-input" type="radio" name="flexRadioDefault" /> Choice 2</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <label class="mb-0">Options</label>
+            <ul class="list-unstyled mb-0 pt-1">
+                <li class="d-inline-block me-2 mb-1">
+                    <label><input type="checkbox" class="form-check-input" checked /> Option 1</label>
+                </li>
+                <li class="d-inline-block me-2 mb-1">
+                    <label><input type="checkbox" class="form-check-input" /> Option 2</label>
+                </li>
+            </ul>
+        </div>
+    </div>
+                                                
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="mb-0">Textarea</label>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="mb-0">Tags</label>
+            <input type="text" class="form-control" />
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="mb-0">Image Upload</label>
+            <input type="file" class="image-preview-filepond" />
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="form-group">
+            <label class="mb-0">Files Upload</label>
+            <input type="file" class="multiple-files-filepond" multiple />
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,47 @@
+{
+    "app": {
+        "title": "គ្រប់គ្រងគេហទំព័រ"
+    },
+    "nav": {
+        "language": "ភាសា",
+        "languages": [
+            { "code": "en", "name": "English" },
+            { "code": "km", "name": "ខ្មែរ" }
+        ],
+        "userProfile": [
+            { "label": "ព័ត៌មានគណនី", "url": "javascript:void(0);" },
+            { "label": "ចំណូលចិត្ត", "url": "javascript:void(0);" },
+            { "label": "ប្ដូរសម្ងាត់", "url": "javascript:void(0);" },
+            { "label": "ការកំណត់", "url": "javascript:void(0);" },
+            { "label": "ចាកចេញ", "url": "javascript:void(0);" }
+        ]
+    },
+    "home": {
+        "welcome": "ស្វាគមន៍",
+        "description": "នេះគឺជាទំព័រដើមដែលបានបង្ហាញដោយ EJS partials.",
+        "basicInput": "ការបញ្ចូលមូលដ្ឋាន",
+        "enterEmail": "បញ្ចូលអ៊ីមែល",
+        "inputTextWithHelp": "បញ្ចូលអត្ថបទជាមួយជំនួយ",
+        "withHelperText": "ជាមួយអត្ថបទជំនួយ",
+        "findHelperText": "ស្វែងរកអត្ថបទជំនួយនៅទីនេះសម្រាប់ប្រអប់អត្ថបទ។"
+    },
+    "pages": {
+        "userPrivileges": "សិទ្ធិអ្នកប្រើប្រាស់",
+        "user": "អ្នកប្រើប្រាស់"
+    },
+    "pagesSubtitle": {
+        "userPrivileges": "ការថែទាំ និង កំណត់ សិទ្ធិអ្នកប្រើប្រាស់",
+        "user": "ការថែទាំ និង កំណត់ អ្នកប្រើប្រាស់"
+    },
+    "button": {
+        "btnClose": "បិទ",
+        "btnAdd": "បន្ថែមថ្មី",
+        "btnView": "បើកមើល",
+        "btnCreate": "បង្កើតថ្មី",
+        "btnEdit": "កែប្រែ",
+        "btnSubmit": "ដាក់ស្នើ",
+        "btnSave": "រក្សាទុក",
+        "btnResetAttempts": "លុប Attempts",
+        "btnResetPassword": "ដាក់ពាក្យសំងាត់ឡើងវិញ"
+    }
+}

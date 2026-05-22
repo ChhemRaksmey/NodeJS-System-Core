@@ -1,0 +1,52 @@
+<header>
+    <nav class="navbar navbar-expand navbar-light navbar-top">
+        <div class="container-fluid">
+
+            <a href="#" class="burger-btn d-block">
+                <i class="bi bi-justify fs-3"></i>
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-lg-0">
+                    
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link active text-gray-600" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <h6 class="mb-0 mt-1 text-gray-600">RAKSMEY CHHEM</h6>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end text-sm">
+                            <li><h6 class="dropdown-header">System Administrator</h6></li>
+
+                            <% if (typeof nav !== 'undefined' && nav.userProfile && Array.isArray(nav.userProfile)) { %>
+                                <% (nav.userProfile).forEach(item => { %>
+                                    <% if (item.url == "") { %>
+                                        <li><a class="dropdown-item text-sm py-0" href="#"><hr class="my-0" /></a></li>
+                                        <script>alert("This is a test alert!")</script>
+                                    <% } else { %>
+                                        <li><a class="dropdown-item text-sm" href="<%= item.url %>"><%= item.label %></a></li>
+                                    <% } %>
+                                <% }) %>
+                            <% } %>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown me-3">
+                        <a class="nav-link active text-gray-600" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class='fas fa-language fs-4'></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
+                            <li><h6 class="dropdown-header"><%= __('nav.language') %></h6></li>
+                            <% if (typeof nav !== 'undefined' && nav.languages && Array.isArray(nav.languages)) { %>
+                                <% (nav.languages).forEach(item => { %>
+                                    <li><a class="dropdown-item text-sm" href="<%= changeLocaleUrl(item.code) %>"><%= item.name %></a></li>
+                                <% }) %>
+                            <% } %>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+</header>

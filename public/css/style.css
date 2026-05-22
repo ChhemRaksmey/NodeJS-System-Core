@@ -1,0 +1,9 @@
+/* Basic styles for the example app */
+:root{ --max-width:960px; --gap:16px; }
+body{ font-family: Arial, Helvetica, sans-serif; margin:0; color:#222; }
+.container{ max-width:var(--max-width); margin:0 auto; padding:24px; }
+.site-header{ background:#0b6; color:#012; padding:12px 0; }
+.site-header h1{ margin:0; }
+.site-header nav{ margin-top:8px; }
+.site-header a{ color:#012; text-decoration:none; margin-right:12px; }
+.site-footer{ background:#f4f4f4; color:#333; padding:12px 0; margin-top:24px; }

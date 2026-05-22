@@ -1,0 +1,579 @@
+
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-8 order-md-1 order-last">
+            <h5 class="mb-0"><%= __('pages.user') %></h5>
+            <p class="text-subtitle text-muted"><%= __('pagesSubtitle.user') %></p>
+        </div>
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li><button class="btn btn-sm btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#popup-form-create"><%= __('button.btnAdd') %></button></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table" id="dt-1">
+
+            <thead>
+                <tr>
+                    <th class="py-1 bg-primary text-white col-10">Privilege Name</th>
+                    <th class="py-1 bg-primary text-white col-1 text-center">Status</th>
+                    <th class="py-1 bg-primary text-white col-1 text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% Array(23).fill().map((_, row) => { %>
+                    <tr>
+                        <td class="py-1">User Privilege <%= row + 1 %></td>
+                        <td class="py-1 text-center">
+                            <span class="badge bg-light-success">Active</span>
+                        </td>
+                        <td class="py-1 text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-primary pt-1 pb-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="icon dripicons dripicons-dots-3"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-sm" onclick="loadView()"> <%= __('button.btnView') %></a></li>
+                                    <li><hr class="my-1" /></li>
+                                    <li><a class="dropdown-item text-sm" onclick="loadEdit()"> <%= __('button.btnEdit') %></a></li>
+                                    <li><hr class="my-1" /></li>
+                                    <li><a class="dropdown-item text-sm" onclick="submitResetAttempts()"> <%= __('button.btnResetAttempts') %></a></li>
+                                    <li><a class="dropdown-item text-sm" onclick="loadResetAttempts()"> <%= __('button.btnResetPassword') %></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-view" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">View Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Staff Id</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-StaffId" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="mb-0">Signon Name</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-SignonName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="mb-0">Full Name</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-FullName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Start</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-DateStart" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Expiry</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-DateExpiry" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Time Start</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-TimeStart" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Time End</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-TimeEnd" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Profile Status</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-ProfileStatus" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">User Privileges</label>
+                            <select class="choices form-select form-select-sm multiple-remove" id="FormView-UserPrivileges" multiple="multiple" disabled>
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Create Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Staff Id</label>
+                            <input type="text" class="form-control form-control-sm" id="FormCreate-StaffId" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="mb-0">Signon Name</label>
+                            <input type="text" class="form-control form-control-sm" id="FormCreate-SignonName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="mb-0">Full Name</label>
+                            <input type="text" class="form-control form-control-sm" id="FormCreate-FullName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Start</label>
+                            <input type="date" class="form-control form-control-sm picker-date" id="FormCreate-DateStart" placeholder="yyyy-mm-dd" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Expiry</label>
+                            <input type="date" class="form-control form-control-sm picker-date" id="FormCreate-DateExpiry" placeholder="yyyy-mm-dd" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Time Start</label>
+                            <input type="date" class="form-control form-control-sm picker-time" id="FormCreate-TimeStart" placeholder="hh:ii" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Time End</label>
+                            <input type="date" class="form-control form-control-sm picker-time" id="FormCreate-TimeEnd" placeholder="hh:ii" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Profile Status</label>
+                            <select class="choices form-select form-select-sm" id="FormCreate-ProfileStatus">
+                                <option value="Active">Active</option>
+                                <option value="Expired">Expired</option>
+                                <option value="Attempted">Attempted</option>
+                                <option value="Reset">Reset</option>
+                                <option value="Disabled">Disabled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">User Privileges</label>
+                            <select class="choices form-select form-select-sm multiple-remove" id="FormCreate-UserPrivileges" multiple="multiple">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitCreate()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Edit Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Staff Id</label>
+                            <input type="text" class="form-control form-control-sm" id="FormEdit-StaffId" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="mb-0">Signon Name</label>
+                            <input type="text" class="form-control form-control-sm" id="FormEdit-SignonName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="mb-0">Full Name</label>
+                            <input type="text" class="form-control form-control-sm" id="FormEdit-FullName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Start</label>
+                            <input type="date" class="form-control form-control-sm picker-date" id="FormEdit-DateStart" placeholder="yyyy-mm-dd" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Expiry</label>
+                            <input type="date" class="form-control form-control-sm picker-date" id="FormEdit-DateExpiry" placeholder="yyyy-mm-dd" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Time Start</label>
+                            <input type="date" class="form-control form-control-sm picker-time" id="FormEdit-TimeStart" placeholder="hh:ii" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Time End</label>
+                            <input type="date" class="form-control form-control-sm picker-time" id="FormEdit-TimeEnd" placeholder="hh:ii" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label class="mb-0">Profile Status</label>
+                            <select class="choices form-select form-select-sm" id="FormEdit-ProfileStatus">
+                                <option value="Active">Active</option>
+                                <option value="Expired">Expired</option>
+                                <option value="Attempted">Attempted</option>
+                                <option value="Reset">Reset</option>
+                                <option value="Disabled">Disabled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">User Privileges</label>
+                            <select class="choices form-select form-select-sm multiple-remove" id="FormEdit-UserPrivileges" multiple="multiple">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitEdit()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-reset-password" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Reset Password</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">New Password</label>
+                            <input type="text" class="form-control form-control-sm" id="FormResetPassword-NewPassword" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitResetPassword()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function loadView() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'FormView',
+                {
+                    staffId: 'STAFF001',
+                    signonName: 'staff.user',
+                    fullName: 'Staff User',
+                    dateStart: '2024-01-01',
+                    dateExpiry: '2024-12-31',
+                    timeStart: '08:00',
+                    timeEnd: '17:00',
+                    profileStatus: 'Active',
+                    userPrivileges: ['PRIVILEGE-2', 'PRIVILEGE-7']
+                }
+            );
+
+            $('#popup-form-view').modal('show');
+        }, 1000);
+    }
+
+    function loadEdit() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'FormEdit',
+                {
+                    staffId: 'STAFF001',
+                    signonName: 'staff.user',
+                    fullName: 'Staff User',
+                    dateStart: '2024-01-01',
+                    dateExpiry: '2024-12-31',
+                    timeStart: '08:00',
+                    timeEnd: '17:00',
+                    profileStatus: 'Active',
+                    userPrivileges: ['PRIVILEGE-1', 'PRIVILEGE-2']
+                }
+            );
+
+            $('#popup-form-edit').modal('show');
+        }, 1000);
+    }
+
+    function loadResetAttempts() {
+        $('#popup-form-reset-password').modal('show');
+    }
+
+    function submitCreate() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+            
+            const formData = {
+                staffId        : $('#FormCreate-StaffId').val(),
+                signonName     : $('#FormCreate-SignonName').val(),
+                fullName       : $('#FormCreate-FullName').val(),
+                dateStart      : $('#FormCreate-DateStart').val(),
+                dateExpiry     : $('#FormCreate-DateExpiry').val(),
+                timeStart      : $('#FormCreate-TimeStart').val(),
+                timeEnd        : $('#FormCreate-TimeEnd').val(),
+                profileStatus  : $('#FormCreate-ProfileStatus').val(),
+                userPrivileges : window.choicesInstances?.['FormCreate-UserPrivileges'] ?
+                    window.choicesInstances['FormCreate-UserPrivileges'].getValue(true) :
+                    $('#FormCreate-UserPrivileges').val()
+            };
+
+            console.log(formData);
+
+            formDataClean('FormCreate');
+
+            $('#popup-form-create').modal('hide');
+        }, 1000);
+    }
+
+    function submitEdit() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            const formData = {
+                staffId        : $('#FormEdit-StaffId').val(),
+                signonName     : $('#FormEdit-SignonName').val(),
+                fullName       : $('#FormEdit-FullName').val(),
+                dateStart      : $('#FormEdit-DateStart').val(),
+                dateExpiry     : $('#FormEdit-DateExpiry').val(),
+                timeStart      : $('#FormEdit-TimeStart').val(),
+                timeEnd        : $('#FormEdit-TimeEnd').val(),
+                profileStatus  : $('#FormEdit-ProfileStatus').val(),
+                userPrivileges : window.choicesInstances?.['FormEdit-UserPrivileges'] ?
+                    window.choicesInstances['FormEdit-UserPrivileges'].getValue(true) :
+                    $('#FormEdit-UserPrivileges').val()
+            };
+
+            console.log(formData);
+
+            formDataClean('FormEdit');
+
+            $('#popup-form-edit').modal('hide');
+        }, 1000);
+    }
+
+    function submitResetAttempts() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+        }, 1000);
+    }
+
+    function submitResetPassword() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            $('#FormResetPassword-NewPassword').val('');
+
+            $('#popup-form-reset-password').modal('hide');
+        }, 1000);
+    }
+
+    function formDataClean(formId) {
+
+        $('#'+ formId +'-StaffId').val('');
+        $('#'+ formId +'-SignonName').val('');
+        $('#'+ formId +'-FullName').val('');
+        $('#'+ formId +'-DateStart').val('');
+        $('#'+ formId +'-DateExpiry').val('');
+        $('#'+ formId +'-TimeStart').val('');
+        $('#'+ formId +'-TimeEnd').val('');
+        $('#'+ formId +'-ProfileStatus').val('');
+
+        const userPrivileges = window.choicesInstances?.[formId +'-UserPrivileges'];
+        if (userPrivileges) {
+            userPrivileges.setChoiceByValue([]);
+        } else {
+            $('#'+ formId +'-UserPrivileges').val([]);
+        }
+
+    }
+
+    function formDataSet(formId, data) {
+
+        $('#'+ formId +'-StaffId').val(data.staffId);
+        $('#'+ formId +'-SignonName').val(data.signonName);
+        $('#'+ formId +'-FullName').val(data.fullName);
+        $('#'+ formId +'-DateStart').val(data.dateStart);
+        $('#'+ formId +'-DateExpiry').val(data.dateExpiry);
+        $('#'+ formId +'-TimeStart').val(data.timeStart);
+        $('#'+ formId +'-TimeEnd').val(data.timeEnd);
+        $('#'+ formId +'-ProfileStatus').val(data.profileStatus);
+
+        const userPrivileges = window.choicesInstances?.[formId +'-UserPrivileges'];
+        if (userPrivileges) {
+            userPrivileges.setChoiceByValue(data.userPrivileges);
+        } else {
+            $('#'+ formId +'-UserPrivileges').val(data.userPrivileges);
+        }
+
+    }
+
+</script>

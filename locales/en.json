@@ -1,0 +1,47 @@
+{
+    "app": {
+        "title": "Mazer Admin Dashboard"
+    },
+    "nav": {
+        "language": "Language",
+        "languages": [
+            { "code": "en", "name": "English" },
+            { "code": "km", "name": "ខ្មែរ" }
+        ],
+        "userProfile": [
+            { "label": "Profile Details", "url": "#" },
+            { "label": "Preferences", "url": "#" },
+            { "label": "Password Change", "url": "#" },
+            { "label": "Settings", "url": "#" },
+            { "label": "Signout", "url": "#" }
+        ]
+    },
+    "home": {
+        "welcome": "Welcome",
+        "description": "This is the home page rendered with EJS partials.",
+        "basicInput": "Basic Input",
+        "enterEmail": "Enter email",
+        "inputTextWithHelp": "Input text with help",
+        "withHelperText": "With Helper Text",
+        "findHelperText": "Find helper text here for given textbox."
+    },
+    "pages": {
+        "userPrivileges": "User Privileges",
+        "user": "User"
+    },
+    "pagesSubtitle": {
+        "userPrivileges": "Maintenance and configuration of user privileges",
+        "user": "Maintenance and configuration of users"
+    },
+    "button": {
+        "btnClose": "Close",
+        "btnAdd": "Add New",
+        "btnView": "View",
+        "btnCreate": "Create",
+        "btnEdit": "Edit",
+        "btnSubmit": "Submit",
+        "btnSave": "Save",
+        "btnResetAttempts": "Reset Attempts",
+        "btnResetPassword": "Reset Password"
+    }
+}

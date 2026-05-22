@@ -1,0 +1,398 @@
+
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-8 order-md-1 order-last">
+            <h5 class="mb-0"><%= __('pages.userPrivileges') %></h5>
+            <p class="text-subtitle text-muted"><%= __('pagesSubtitle.userPrivileges') %></p>
+        </div>
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li><button class="btn btn-sm btn-primary ms-1" onclick="loadCreate()"><%= __('button.btnAdd') %></button></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table" id="dt-1">
+
+            <thead>
+                <tr>
+                    <th class="bg-primary text-white py-1 col-11">Privilege Name</th>
+                    <th class="bg-primary text-white py-1 col-1 text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% Array(13).fill().map((_, i) => { %>
+                    <tr>
+                        <td class="p-1">Privilege Name <%= i + 1 %></td>
+                        <td class="p-1 text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-primary pt-1 pb-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="icon dripicons dripicons-dots-3"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#!" onclick="loadView()"> <%= __('button.btnView') %></a></li>
+                                    <li><a class="dropdown-item" href="#!" onclick="loadEdit()"> <%= __('button.btnEdit') %></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-view" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">View Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group row mb-1">
+                    <div class="col-3">
+                        <label class="col-form-label">Full Name</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control form-control-sm" id="form-view-fullname" disabled />
+                    </div>
+                </div>
+
+                <div id="form-view-privileges"></div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Create Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group row mb-1">
+                    <div class="col-3">
+                        <label class="col-form-label">Full Name</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control form-control-sm" id="form-create-fullname" />
+                    </div>
+                </div>
+
+                <div id="form-create-privileges"></div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitCreate()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Edit Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="form-group row mb-1">
+                    <div class="col-3">
+                        <label class="col-form-label">Full Name</label>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control form-control-sm" id="form-edit-fullname" />
+                    </div>
+                </div>
+
+                <div id="form-edit-privileges"></div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitEdit()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function loadView() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'form-view',
+                'User Privilege 1',
+                [
+                    { "PRIVILEGE-1": "Privilege 1" },
+                    { "PRIVILEGE-2": "Privilege 2" },
+                    { "PRIVILEGE-3": "Privilege 3" },
+                    { "PRIVILEGE-4": "Privilege 4" },
+                    { "PRIVILEGE-5": "Privilege 5" },
+                    { "PRIVILEGE-6": "Privilege 6" },
+                    { "PRIVILEGE-7": "Privilege 7" },
+                    { "PRIVILEGE-8": "Privilege 8" },
+                ],
+                [
+                    {
+                        "screenid": 'SCREEN-1',
+                        "screenLabel": "Screen Name 1",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    },
+                    {
+                        "screenid": 'SCREEN-2',
+                        "screenLabel": "Screen Name 2",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    },
+                    {
+                        "screenid": 'SCREEN-3',
+                        "screenLabel": "Screen Name 3",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    },
+                    {
+                        "screenid": 'SCREEN-4',
+                        "screenLabel": "Screen Name 4",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    }
+                ]
+            );
+
+            $('#popup-form-view').modal('show');
+        }, 1000);
+    }
+
+    function loadCreate() {
+        
+        formDataSet(
+            'form-create',
+            'User Privilege 1',
+            [
+                { "PRIVILEGE-1": "Privilege 1" },
+                { "PRIVILEGE-2": "Privilege 2" },
+                { "PRIVILEGE-3": "Privilege 3" },
+                { "PRIVILEGE-4": "Privilege 4" },
+                { "PRIVILEGE-5": "Privilege 5" },
+                { "PRIVILEGE-6": "Privilege 6" },
+                { "PRIVILEGE-7": "Privilege 7" },
+                { "PRIVILEGE-8": "Privilege 8" },
+            ],
+            [
+                {
+                    "screenid": 'SCREEN-1',
+                    "screenLabel": "Screen Name 1",
+                    "privileges": []
+                },
+                {
+                    "screenid": 'SCREEN-2',
+                    "screenLabel": "Screen Name 2",
+                    "privileges": []
+                },
+                {
+                    "screenid": 'SCREEN-3',
+                    "screenLabel": "Screen Name 3",
+                    "privileges": []
+                },
+                {
+                    "screenid": 'SCREEN-4',
+                    "screenLabel": "Screen Name 4",
+                    "privileges": []
+                }
+            ]
+        );
+
+        $('#popup-form-create').modal('show');
+
+    }
+
+    function loadEdit() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'form-edit',
+                'User Privilege 1',
+                [
+                    { "PRIVILEGE-1": "Privilege 1" },
+                    { "PRIVILEGE-2": "Privilege 2" },
+                    { "PRIVILEGE-3": "Privilege 3" },
+                    { "PRIVILEGE-4": "Privilege 4" },
+                    { "PRIVILEGE-5": "Privilege 5" },
+                    { "PRIVILEGE-6": "Privilege 6" },
+                    { "PRIVILEGE-7": "Privilege 7" },
+                    { "PRIVILEGE-8": "Privilege 8" },
+                ],
+                [
+                    {
+                        "screenid": 'SCREEN-1',
+                        "screenLabel": "Screen Name 1",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    },
+                    {
+                        "screenid": 'SCREEN-2',
+                        "screenLabel": "Screen Name 2",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    },
+                    {
+                        "screenid": 'SCREEN-3',
+                        "screenLabel": "Screen Name 3",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    },
+                    {
+                        "screenid": 'SCREEN-4',
+                        "screenLabel": "Screen Name 4",
+                        "privileges": ['PRIVILEGE-1', 'PRIVILEGE-2', 'PRIVILEGE-3']
+                    }
+                ]
+            );
+
+            $('#popup-form-edit').modal('show');
+        }, 1000);
+    }
+
+    function submitCreate() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            const formData = {
+                fullname: $('#form-create-fullname').val(),
+                privileges: $('#form-create-privileges select').map((i, el) => {
+                    return {
+                        [$(el).attr('id')] : $(el).val()
+                    }
+                }).get()
+            };
+
+            console.log( formData );
+
+            formDataReset('form-create');
+
+            $('#popup-form-create').modal('hide');
+        }, 1000);
+    }
+
+    function submitEdit() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            const formData = {
+                fullname: $('#form-edit-fullname').val(),
+                privileges: $('#form-edit-privileges select').map((i, el) => {
+                    return {
+                        [$(el).attr('id')] : $(el).val()
+                    }
+                }).get()
+            };
+
+            console.log( formData );
+
+            formDataReset('form-edit');
+
+            $('#popup-form-edit').modal('hide');
+        }, 1000);
+    }
+
+    function formDataSet(formid, fullname, functions, privileges) {
+        const container = $(`#${formid}-privileges`);
+        if (!container.length) {
+            console.error(`formDataSet: container not found for #${formid}-privileges`);
+            return;
+        }
+        container.empty();
+        $(`#${formid}-fullname`).val(fullname);
+
+        const disabled = formid === 'form-view';
+
+        privileges.forEach((priv, index) => {
+
+            const screenLabel      = priv.screenLabel;
+            const screenPrivileges = priv.privileges || [];
+            const selectId         = priv.screenid;
+            const select           = $(`<select id="${selectId}" class="choices form-select form-select-sm multiple-remove" multiple="multiple"></select>`);
+
+            select.append(`<option value="ALL">All Privileges</option>`);
+            if (disabled) {
+                select.prop('disabled', true);
+            }
+
+            functions.forEach(func => {
+                const funcName = Object.keys(func)[0];
+                const funcLabel = func[funcName];
+                const selected = screenPrivileges.includes(funcName) ? 'selected' : '';
+                select.append(`<option value="${funcName}" ${selected}>${funcLabel}</option>`);
+            });
+
+            const row = $(
+                `<div class="form-group row mb-2">
+                    <div class="col-3">
+                        <label class="col-form-label">${screenLabel}</label>
+                    </div>
+                    <div class="col-9"></div>
+                </div>`
+            );
+
+            row.find('.col-9').append(select);
+            container.append(row);
+
+            new Choices(select[0], {
+                delimiter: ",",
+                editItems: true,
+                maxItemCount: -1,
+                removeItemButton: true,
+                shouldSort: false,
+            });
+
+        });
+    }
+
+    function formDataReset(formid) {
+        $(`#${formid}-fullname`).val('');
+        $(`#${formid}-privileges`).empty();
+    }
+
+</script>
