@@ -1,0 +1,590 @@
+
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-8 order-md-1 order-last">
+            <h5 class="mb-0"><%= __('pages.fas_booking') %></h5>
+            <p class="text-subtitle text-muted"><%= __('pagesSubtitle.fas_booking') %></p>
+        </div>
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li><button class="btn btn-sm btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#popup-form-create"><%= __('button.btnAdd') %></button></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table" id="dt-1">
+
+            <thead>
+                <tr>
+                    <th class="py-1 bg-primary text-white col-8">Asset Name</th>
+                    <th class="py-1 bg-primary text-white col-2 text-end">Cost</th>
+                    <th class="py-1 bg-primary text-white col-1 text-center">Status</th>
+                    <th class="py-1 bg-primary text-white col-1 text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% Array(23).fill().map((_, row) => { %>
+                    <tr>
+                        <td class="py-1">Asset-000<%= row + 1 %> | Asset Name <%= row + 1 %></td>
+                        <td class="py-1 text-end">$<%= (Math.random() * 1000).toFixed(2) %></td>
+                        <td class="py-1 text-center">Pending</td>
+                        <td class="py-1 text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-primary pt-1 pb-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="icon dripicons dripicons-dots-3"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-sm" onclick="loadView()"> <%= __('button.btnView') %></a></li>
+                                    <li><a class="dropdown-item text-sm" onclick="loadSchedule()"> <%= __('button.btnSchedule') %></a></li>
+                                    <li><hr class="my-1" /></li>
+                                    <li><a class="dropdown-item text-sm" onclick="loadEdit()"> <%= __('button.btnEdit') %></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-view" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">View Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">Request Id</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-RequestId" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="mb-0">Account</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-Account" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Name</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Booking Date</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-BookingDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Cost</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetCost" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="mb-0">Lifetime</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetLifetime" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Owner</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetOwner" />
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-view-schedule" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-scrollable">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">View Schedule</h5>
+            </div>
+
+            <div class="modal-body">
+                <table class="table table-striped table-sm table-borderless mb-0">
+
+                    <thead>
+                        <tr>
+                            <th class="p-0 bg-primary text-white col-1 text-center">Row</th>
+                            <th class="p-0 bg-primary text-white col-3 text-center">Date</th>
+                            <th class="p-0 bg-primary text-white col-4 text-center">Netbook</th>
+                            <th class="p-0 bg-primary text-white col-4 text-center">Depreciation</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <% Array(36).fill().map((_, row) => { %>
+                            <tr>
+                                <td class="p-0 text-center"><%= row + 1 %></td>
+                                <td class="p-0 text-center">2026-01-<%= (row + 1).toString().padStart(2, '0') %></td>
+                                <td class="p-0 text-center"><%= (Math.random() * 1000).toFixed(2) %></td>
+                                <td class="p-0 text-center"><%= (Math.random() * 1000).toFixed(2) %></td>
+                            </tr>
+                        <% }) %>
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Create Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">Request Id</label>
+                            <select class="choices form-select form-select-sm" id="FormCreate-RequestId">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="mb-0">Account</label>
+                            <select class="choices form-select form-select-sm" id="FormCreate-Account">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Name</label>
+                            <select class="choices form-select form-select-sm" id="FormCreate-AssetName">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Booking Date</label>
+                            <input type="text" class="form-control form-control-sm" id="FormCreate-BookingDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Cost</label>
+                            <input type="text" class="form-control form-control-sm" id="FormCreate-AssetCost" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="mb-0">Lifetime</label>
+                            <select class="choices form-select form-select-sm" id="FormCreate-AssetLifetime">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Owner</label>
+                            <select class="choices form-select form-select-sm" id="FormCreate-AssetOwner">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitCreate()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-edit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Edit Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">Request Id</label>
+                            <select class="choices form-select form-select-sm" id="FormEdit-RequestId">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="mb-0">Account</label>
+                            <select class="choices form-select form-select-sm" id="FormEdit-Account">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Name</label>
+                            <select class="choices form-select form-select-sm" id="FormEdit-AssetName">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Booking Date</label>
+                            <input type="text" class="form-control form-control-sm" id="FormEdit-BookingDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Cost</label>
+                            <input type="text" class="form-control form-control-sm" id="FormEdit-AssetCost" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="mb-0">Lifetime</label>
+                            <select class="choices form-select form-select-sm" id="FormEdit-AssetLifetime">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Owner</label>
+                            <select class="choices form-select form-select-sm" id="FormEdit-AssetOwner">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitEdit()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function loadView() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'FormView',
+                {
+                    RequestId : 'PRIVILEGE-3',
+                    BookingDate : '2026-05-01',
+                    Account : 'PRIVILEGE-5',
+                    AssetName : 'PRIVILEGE-2',
+                    AssetLifetime : 'PRIVILEGE-7',
+                    AssetCost : '$500.00',
+                    AssetOwner : 'PRIVILEGE-4'
+                }
+            );
+
+            $('#popup-form-view').modal('show');
+        }, 1000);
+    }
+
+    function loadSchedule() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            $('#popup-form-view-schedule').modal('show');
+        }, 1000);
+    }
+
+    function loadEdit() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'FormEdit',
+                {
+                    RequestId : 'PRIVILEGE-3',
+                    BookingDate : '2026-05-01',
+                    Account : 'PRIVILEGE-5',
+                    AssetName : 'PRIVILEGE-2',
+                    AssetLifetime : 'PRIVILEGE-7',
+                    AssetCost : '$500.00',
+                    AssetOwner : 'PRIVILEGE-4'
+                }
+            );
+
+            $('#popup-form-edit').modal('show');
+        }, 1000);
+    }
+
+    function submitCreate() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+            
+            const formData = {
+                RequestId : $("#FormCreate-RequestId").val(),
+                BookingDate : $("#FormCreate-BookingDate").val(),
+                Account : $("#FormCreate-Account").val(),
+                AssetName : $("#FormCreate-AssetName").val(),
+                AssetLifetime : $("#FormCreate-AssetLifetime").val(),
+                AssetCost : $("#FormCreate-AssetCost").val(),
+                AssetOwner : $("#FormCreate-AssetOwner").val()
+            };
+
+            formDataClean('FormCreate');
+
+            $('#popup-form-create').modal('hide');
+        }, 1000);
+    }
+
+    function submitEdit() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            const formData = {
+                RequestId : $('#FormEdit-RequestId').val(),
+                BookingDate : $('#FormEdit-BookingDate').val(),
+                Account : $('#FormEdit-Account').val(),
+                AssetName : $('#FormEdit-AssetName').val(),
+                AssetLifetime : $('#FormEdit-AssetLifetime').val(),
+                AssetCost : $('#FormEdit-AssetCost').val(),
+                AssetOwner : $('#FormEdit-AssetOwner').val()
+            };
+
+            formDataClean('FormEdit');
+
+            $('#popup-form-edit').modal('hide');
+        }, 1000);
+    }
+
+    function formDataClean(formId) {
+
+        $('#'+ formId +'-BookingDate').val("");
+        $('#'+ formId +'-AssetCost').val("");
+
+        const RequestId     = window.choicesInstances?.[formId +'-RequestId'];
+        const Account       = window.choicesInstances?.[formId +'-Account'];
+        const AssetName     = window.choicesInstances?.[formId +'-AssetName'];
+        const AssetLifetime = window.choicesInstances?.[formId +'-AssetLifetime'];
+        const AssetOwner    = window.choicesInstances?.[formId +'-AssetOwner'];
+
+        if (RequestId) { RequestId.setChoiceByValue([]); }
+        else { $('#'+ formId +'-RequestId').val([]); }
+        
+        if (Account) { Account.setChoiceByValue([]); }
+        else { $('#'+ formId +'-Account').val([]); }
+
+        if (AssetName) { AssetName.setChoiceByValue([]); }
+        else { $('#'+ formId +'-AssetName').val([]); }
+        
+        if (AssetLifetime) { AssetLifetime.setChoiceByValue([]); }
+        else { $('#'+ formId +'-AssetLifetime').val([]); }
+        
+        if (AssetOwner) { AssetOwner.setChoiceByValue([]); }
+        else { $('#'+ formId +'-AssetOwner').val([]); }
+
+    }
+
+    function formDataSet(formId, data) {
+
+        $('#'+ formId +'-BookingDate').val(data.BookingDate);
+        $('#'+ formId +'-AssetCost').val(data.AssetCost);
+
+        const RequestId     = window.choicesInstances?.[formId +'-RequestId'];
+        const Account       = window.choicesInstances?.[formId +'-Account'];
+        const AssetName     = window.choicesInstances?.[formId +'-AssetName'];
+        const AssetLifetime = window.choicesInstances?.[formId +'-AssetLifetime'];
+        const AssetOwner    = window.choicesInstances?.[formId +'-AssetOwner'];
+
+        if (RequestId) { RequestId.setChoiceByValue(data.RequestId); }
+        else { $('#'+ formId +'-RequestId').val(data.RequestId); }
+        
+        if (Account) { Account.setChoiceByValue(data.Account); }
+        else { $('#'+ formId +'-Account').val(data.Account); }
+
+        if (AssetName) { AssetName.setChoiceByValue(data.AssetName); }
+        else { $('#'+ formId +'-AssetName').val(data.AssetName); }
+        
+        if (AssetLifetime) { AssetLifetime.setChoiceByValue(data.AssetLifetime); }
+        else { $('#'+ formId +'-AssetLifetime').val(data.AssetLifetime); }
+        
+        if (AssetOwner) { AssetOwner.setChoiceByValue(data.AssetOwner); }
+        else { $('#'+ formId +'-AssetOwner').val(data.AssetOwner); }
+
+    }
+
+</script>

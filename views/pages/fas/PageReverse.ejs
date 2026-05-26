@@ -1,0 +1,240 @@
+
+<div class="page-title">
+    <div class="row">
+        <div class="col-12 col-md-8 order-md-1 order-last">
+            <h5 class="mb-0"><%= __('pages.fas_reverse') %></h5>
+            <p class="text-subtitle text-muted"><%= __('pagesSubtitle.fas_reverse') %></p>
+        </div>
+        <div class="col-12 col-md-4 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li><button class="btn btn-sm btn-primary ms-1" data-bs-toggle="modal" data-bs-target="#popup-form-create"><%= __('button.btnAdd') %></button></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <table class="table" id="dt-1">
+
+            <thead>
+                <tr>
+                    <th class="py-1 bg-primary text-white col-2 text-center">Date Reverse</th>
+                    <th class="py-1 bg-primary text-white col-2">Asset No</th>
+                    <th class="py-1 bg-primary text-white col-7">Asset Name</th>
+                    <th class="py-1 bg-primary text-white col-1 text-center">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <% Array(23).fill().map((_, row) => { %>
+                    <tr>
+                        <td class="py-1 text-center">2023-10-01</td>
+                        <td class="py-1">Asset No <%= row + 1 %></td>
+                        <td class="py-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                        <td class="py-1 text-center">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-primary pt-1 pb-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="icon dripicons dripicons-dots-3"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item text-sm" onclick="loadView()"> <%= __('button.btnView') %></a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                <% }) %>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-view" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">View Details</h5>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="mb-0">Asset No</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetNo" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Name</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Effective</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-DateEffective" />
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label class="mb-0">Reason</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-Reason" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="popup-form-create" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header pb-2 pt-3">
+                <h5 class="modal-title">Create Details</h5>
+            </div>
+
+            <div class="modal-body">
+                
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="mb-0">Asset No</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetNo" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="mb-0">Asset Name</label>
+                            <input type="text" class="form-control form-control-sm" disabled id="FormView-AssetName" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="mb-0">Date Effective</label>
+                            <input type="text" class="form-control form-control-sm" id="FormView-DateEffective" />
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <label class="mb-0">Reason</label>
+                            <select class="choices form-select form-select-sm" id="FormView-Reason">
+                                <option value="ALL">All Privileges</option>
+                                <option value="PRIVILEGE-1">Privilege 1</option>
+                                <option value="PRIVILEGE-2">Privilege 2</option>
+                                <option value="PRIVILEGE-3">Privilege 3</option>
+                                <option value="PRIVILEGE-4">Privilege 4</option>
+                                <option value="PRIVILEGE-5">Privilege 5</option>
+                                <option value="PRIVILEGE-6">Privilege 6</option>
+                                <option value="PRIVILEGE-7">Privilege 7</option>
+                                <option value="PRIVILEGE-8">Privilege 8</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer py-2">
+                <button type="button" class="btn btn-sm btn-primary ms-1" onclick="submitCreate()">
+                    <span class="d-none d-sm-block"><%= __('button.btnSubmit') %></span>
+                </button>
+                <button type="button" class="btn btn-sm btn-light-secondary" data-bs-dismiss="modal">
+                    <span class="d-none d-sm-block"><%= __('button.btnClose') %></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function loadView() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+
+            formDataSet(
+                'FormView',
+                {
+                    assetNo: 'Asset No 1',
+                    assetName: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    dateEffective: '2023-10-01',
+                    Reason: 'PRIVILEGE-5'
+                }
+            );
+
+            $('#popup-form-view').modal('show');
+        }, 1000);
+    }
+
+    function submitCreate() {
+        loadingShow();
+        setTimeout(() => {
+            loadingHide();
+            
+            const formData = {
+                assetNo: 'Asset No 1',
+                assetName: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                dateEffective: '2023-10-01',
+                Reason: 'PRIVILEGE-5'
+            };
+
+            formDataClean('FormCreate');
+
+            $('#popup-form-create').modal('hide');
+        }, 1000);
+    }
+
+    function formDataClean(formId) {
+
+        $('#'+ formId +'-AssetNo').val('');
+        $('#'+ formId +'-AssetName').val('');
+        $('#'+ formId +'-DateEffective').val('');
+
+        const Reason = window.choicesInstances?.[formId +'-Reason'];
+        if (Reason) { Reason.setChoiceByValue([]); }
+        else { $('#'+ formId +'-Reason').val([]); }
+
+    }
+
+    function formDataSet(formId, data) {
+
+        $('#'+ formId +'-AssetNo').val(data.assetNo);
+        $('#'+ formId +'-AssetName').val(data.assetName);
+        $('#'+ formId +'-DateEffective').val(data.dateEffective);
+
+        const Reason = window.choicesInstances?.[formId +'-Reason'];
+        if (Reason) { Reason.setChoiceByValue(data.Reason); }
+        else { $('#'+ formId +'-Reason').val(data.Reason); }
+    }
+
+</script>
