@@ -27,16 +27,39 @@
     },
     "pages": {
         "userPrivileges": "User Privileges",
-        "user": "User"
+        "user": "User",
+
+        "fas_account": "Asset Account",
+        "fas_model": "Asset Model",
+        "fas_lifetime": "Asset Lifetime",
+        "fas_supplier": "Asset Supplier",
+        "fas_booking": "Booking",
+        "fas_request": "Request",
+        "fas_reverse": "Reverse",
+        "fas_transfer": "Transfer",
+        "fas_disposal": "Disposal"
+
     },
     "pagesSubtitle": {
         "userPrivileges": "Maintenance and configuration of user privileges",
-        "user": "Maintenance and configuration of users"
+        "user": "Maintenance and configuration of users",
+
+        "fas_account": "Maintenance and configuration of asset accounts",
+        "fas_model": "Maintenance and configuration of models",
+        "fas_lifetime": "Maintenance and configuration of lifetimes",
+        "fas_supplier": "Maintenance and configuration of suppliers",
+        "fas_booking": "Maintenance and configuration of bookings",
+        "fas_request": "Maintenance and configuration of requests",
+        "fas_reverse": "Maintenance and configuration of reversals",
+        "fas_transfer": "Maintenance and configuration of transfers",
+        "fas_disposal": "Maintenance and configuration of disposals"
+
     },
     "button": {
         "btnClose": "Close",
         "btnAdd": "Add New",
         "btnView": "View",
+        "btnSchedule": "Schedule",
         "btnCreate": "Create",
         "btnEdit": "Edit",
         "btnSubmit": "Submit",
